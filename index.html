@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9th-Corner</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+ 
+
+<!-- Splash Screen -->
+  <div class="splash-screen">
+    <div class="splash-logo">
+      <img src="img/logo.png" alt="Logo">
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="img/logo.png">
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+  </header>
+
+  <!-- Fullscreen Menu -->
+  <div class="fullscreen-menu" id="menu">
+    <button class="menu-close" onclick="toggleMenu()">✕</button>
+    <div class="menu-left">
+      <img src="img/statue.png" alt="Statue" class="statue-float">
+    </div>
+    <div class="menu-right">
+      <a href="#">Home</a>
+      <a href="#">Gallery</a>
+      <a href="#">Vlog</a>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+    </div>
+  </div>
+
+  <!-- Banner Section -->
+  <section class="banner-section">
+    <div class="arrow left" onclick="prevSlide()">❮</div>
+    <div class="carousel" id="carousel">
+      <div class="slide" style="background-image: url('img/ban1.avif');">
+        <div class="slide-text">Welcome to Our World</div>
+      </div>
+      <div class="slide" style="background-image: url('img/ban2.avif');">
+        <div class="slide-text">Interior Beyond Imagination</div>
+      </div>
+      <div class="slide" style="background-image: url('img/ban3.avif');">
+        <div class="slide-text">Elegance Meets Function</div>
+      </div>
+      <div class="slide" style="background-image: url('img/ban4.avif');">
+        <div class="slide-text">Design with Purpose</div>
+      </div>
+      <div class="slide" style="background-image: url('img/ban5.avif');">
+        <div class="slide-text">Space You Deserve</div>
+      </div>
+      <div class="slide" style="background-image: url('img/ban6.avif');">
+        <div class="slide-text">Make It Magical</div>
+      </div>
+    </div>
+    <div class="arrow right" onclick="nextSlide()">❯</div>
+  </section>
+
+
+
+  <section class="brand-carousel">
+    <div class="brand-track">
+      <div class="brand"><img src="img/b1.png" alt="Brand 1"></div>
+      <div class="brand"><img src="img/b2.png" alt="Brand 2"></div>
+      <div class="brand"><img src="img/b3.png" alt="Brand 3"></div>
+      <div class="brand"><img src="img/b4.png" alt="Brand 4"></div>
+      <div class="brand"><img src="img/b5.png" alt="Brand 5"></div>
+      <div class="brand"><img src="img/b6.png" alt="Brand 6"></div>
+      <div class="brand"><img src="img/b7.png" alt="Brand 7"></div>
+      <div class="brand"><img src="img/b8.png" alt="Brand 8"></div>
+      <!-- duplicate -->
+      <div class="brand"><img src="img/b1.png" alt="Brand 1"></div>
+      <div class="brand"><img src="img/b2.png" alt="Brand 2"></div>
+      <div class="brand"><img src="img/b3.png" alt="Brand 3"></div>
+      <div class="brand"><img src="img/b4.png" alt="Brand 4"></div>
+      <div class="brand"><img src="img/b5.png" alt="Brand 5"></div>
+      <div class="brand"><img src="img/b6.png" alt="Brand 6"></div>
+      <div class="brand"><img src="img/b7.png" alt="Brand 7"></div>
+      <div class="brand"><img src="img/b8.png" alt="Brand 8"></div>
+    </div>
+  </section>
+
+
+
+  <section class="precision-section">
+    <div class="precision-container">
+      <h1 class="precision-heading">
+        <span class="split">PRECISION</span>
+        <br>
+        <span class="split">IN</span>
+        <span class="inline-image">
+          <img src="img/p1.avif">
+        </span>
+        <span class="split">EVERY</span>
+        <br>
+        <span class="split">DESIGN</span>
+        <span class="precision-para">
+          Crafting with unmatched attention to detail, blending innovation and artistry.
+        </span>
+      </h1>
+    </div>
+  </section>
+
+
+
+  <section class="about-section">
+    <div class="about-title">
+      <h1>ABOUT US</h1>
+    </div>
+    <div class="about-content">
+      <div class="about-image">
+        <img src="img/owner.avif" alt="About Us Image">
+      </div>
+      <div class="about-text">
+        <h2>Designing Spaces, Defining Lifestyles
+        </h2>
+        <p>
+          At 9th Corner Incorporation, we create spaces that represent who you are and how you live. We transform empty
+          spaces into expressive surroundings, whether they are luxury villas, warm homes, or vibrant workspaces. We
+          were founded by dedicated individuals that have a strong interest in architecture and aesthetics, and we are
+          known for our inventiveness, dependability, and attention to detail. Every project provides an opportunity for
+          us to combine emotion with long-lasting design.
+
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="cursor-trail"></div>
+
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade out ABOUT US before content appears
+    gsap.to(".about-title h1", {
+      scale: 0.6,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".about-content",
+        start: "top 90%",
+        end: "top 70%",
+        scrub: true
+      }
+    });
+
+    // Background color change: black only during content section
+    ScrollTrigger.create({
+      trigger: ".about-content",
+      start: "top center",
+      end: "bottom bottom",
+      scrub: true,
+      onEnter: () => {
+        gsap.to(".about-section", { backgroundColor: "#000", color: "#fff", duration: 0.5 });
+      },
+      onLeaveBack: () => {
+        gsap.to(".about-section", { backgroundColor: "#fff", color: "#000", duration: 0.5 });
+      }
+    });
+
+
+
+    // Image fade-in from left
+    gsap.fromTo(".about-image",
+      { x: -100, opacity: 0 },
+      {
+        x: 0, opacity: 1,
+        scrollTrigger: {
+          trigger: ".about-content",
+          start: "top 80%",
+          end: "top 50%",
+          scrub: true
+        }
+      }
+    );
+
+    // Text fade-in from right
+    gsap.fromTo(".about-text",
+      { x: 100, opacity: 0 },
+      {
+        x: 0, opacity: 1,
+        scrollTrigger: {
+          trigger: ".about-content",
+          start: "top 80%",
+          end: "top 50%",
+          scrub: true
+        }
+      }
+    );
+
+    // Reveal content
+    ScrollTrigger.create({
+      trigger: ".about-content",
+      start: "top 80%",
+      onEnter: () => gsap.to(".about-content", { opacity: 1, duration: 1 })
+    });
+  </script>
+
+  <div class="h-heading">
+    <h1>OUR CORE SERVICES</h1>
+  </div>
+
+  <div class="hover-gallery">
+    <div class="panel" style="background-image: url('img/int1.jpeg')">
+      <div class="text">Residential Interior Design</div>
+    </div>
+    <div class="panel" style="background-image: url('img/int2.jpeg')">
+      <div class="text">Turnkey Interior Solution</div>
+    </div>
+    <div class="panel" style="background-image: url('img/int3.jpeg')">
+      <div class="text">Modern Interior Design</div>
+    </div>
+    <div class="panel" style="background-image: url('img/int4.jpeg')">
+      <div class="text">Corporate Interior Design</div>
+    </div>
+    <div class="panel" style="background-image: url('img/int5.jpeg')">
+      <div class="text">Luxury Home Interior</div>
+    </div>
+  </div>
+
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Section parallax fade-in effect
+    gsap.from(".hover-gallery", {
+      opacity: 0,
+      y: 100,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".hover-gallery",
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: true
+      }
+    });
+
+    // Parallax movement on each panel background
+    gsap.utils.toArray(".panel").forEach((panel) => {
+      gsap.to(panel, {
+        yPercent: -12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hover-gallery",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        }
+      });
+    });
+  </script>
+
+  <section class="parallax-section">
+    <div class="content">
+      <div class="quote">
+        <h2 id="typed-text"></h2>
+      </div>
+      <div class="image-container">
+        <img src="img/quote.jpeg" alt="Sketch House">
+      </div>
+    </div>
+  </section>
+
+  <!-- Typed.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    let typedStarted = false;
+
+    ScrollTrigger.create({
+      trigger: ".parallax-section",
+      start: "top 80%",
+      onEnter: (self) => {
+        if (!typedStarted) {
+          new Typed("#typed-text", {
+            strings: [
+              `Your home should feel like you. 
+Not just in how it looks —
+but in how it lives, how it breathes,
+and how it makes you feel.<br>
+
+At 9th Corner, we don’t just design spaces —
+we craft comfort, soul, and stories.`
+            ],
+            typeSpeed: 35,
+            backSpeed: 0,
+            showCursor: false
+          });
+          typedStarted = true;
+          self.kill(); // kill ScrollTrigger so it never re-triggers
+        }
+      }
+    });
+
+    // Image animation
+    gsap.from(".image-container img", {
+      y: 150,
+      opacity: 0,
+      duration: 2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".parallax-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    // Text fade-in
+    gsap.from(".quote", {
+      x: -100,
+      opacity: 0,
+      duration: 2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".parallax-section",
+        start: "top 85%",
+        toggleActions: "play none none none"
+      }
+    });
+  </script>
+  <section class="work-section">
+    <div class="work-container">
+      <div class="work-header">
+        <h2 class="work-title">Our Work</h2>
+        <p class="work-subtitle">Creative visuals blending art & innovation. Explore our projects that combine aesthetic
+          design with functional spaces, highlighting creativity and attention to detail in every piece we craft.</p>
+      </div>
+
+      <!-- Row 1 (scrolls right) -->
+      <div class="slider row-1">
+        <div class="slider-inner">
+          <a href="#"><img src="img/ss1.avif"></a>
+          <a href="#"><img src="img/ss2.avif"></a>
+          <a href="#"><img src="img/ss3.avif"></a>
+          <a href="#"><img src="img/ss4.avif"></a>
+          <a href="#"><img src="img/ss5.avif"></a>
+          <a href="#"><img src="img/ss6.avif"></a>
+          <a href="#"><img src="img/ss7.avif"></a>
+          <a href="#"><img src="img/ss8.avif"></a>
+          <a href="#"><img src="img/ss9.avif"></a>
+          <a href="#"><img src="img/ss10.avif"></a>
+          <a href="#"><img src="img/ss11.avif"></a>
+          <a href="#"><img src="img/ss12.avif"></a>
+        </div>
+      </div>
+
+      <!-- Row 2 (slides right) -->
+      <div class="slider row-2">
+        <div class="slider-inner2">
+          <a href="#"><img src="img/ban1.avif"></a>
+          <a href="#"><img src="img/ban2.avif"></a>
+          <a href="#"><img src="img/ban3.avif"></a>
+          <a href="#"><img src="img/ban4.avif"></a>
+          <a href="#"><img src="img/ban5.avif"></a>
+          <a href="#"><img src="img/ban6.avif"></a>
+          <a href="#"><img src="img/ban7.avif"></a>
+          <a href="#"><img src="img/ban8.avif"></a>
+          <a href="#"><img src="img/ban9.avif"></a>
+          <a href="#"><img src="img/ban10.avif"></a>
+          <a href="#"><img src="img/ban11.avif"></a>
+          <a href="#"><img src="img/ban12.avif"></a>
+        </div>
+      </div>
+  </section>
+
+
+
+  <!-- choose us -->
+
+  <!-- Main Content Wrapper -->
+  <div class="main-content-container">
+
+    <!-- Top Gallery Section (kept from previous response) -->
+    <div class="hero-gallery-section">
+      <div class="hero-grid">
+        <div class="grid-item large-image">
+          <img src="img/ss11.avif" alt="A blurry portrait of a person.">
+          <!-- <div class="image-overlay">
+            <span class="left-text">[*0]</span>
+            <span class="middle-text">Exhibitions</span>
+            <span class="right-text">[1965]</span>
+          </div> -->
+        </div>
+        <div class="grid-item beetle-item">
+          <img src="img/ban2.avif" alt="A vintage Volkswagen Beetle on a street." style="height: 332px;">
+          <div class="caption">
+            <span class="year">[The Purpose Behind Every Space]</span>
+            <p>As top interior designers, we specialize in designing rooms that are not only aesthetically pleasing but also practical, cozy, and exclusively yours.
+</p>
+          </div>
+        </div>
+        <div class="grid-item number-item">
+          <h1>Ideas Built Into Every Corner</h1>
+          <span><b>Residential Interiors -</b> Designing homes, villas, farmhouses, and apartments.<br>
+            <b>Turnkey Projects -</b> Complete execution from inception to completion.<br>
+            <b>Luxury Interiors -</b> Sleek, high-end interiors designed to fit your needs.<br>
+            <b>Architecture Services -</b> Structures that are carefully planned to combine form and function.
+          </span>
+        </div>
+        <div class="grid-item old-man-item">
+          <img src="img/ban3.avif" alt="A portrait of an old man with a hat." style="height: 311px;">
+        </div>
+        <div class="grid-item tram-item">
+          <img src="img/ban4.avif" alt="A black and white photo of a tram." style="height: 311px;">
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Visual & Poetry Section -->
+    <div class="visual-poetry-section">
+      <div class="text-container visual-container">
+        <h1 class="visual-text" style="color: #212121;">Interiors &
+      </div>
+
+      <div class="text-container poetry-container">
+        <div class="flower-icon-container">
+          <img src="img/flower.png" alt="A stylized flower icon" class="flower-icon" />
+        </div>
+        <h1 class="poetry-text">Beyond</h1>
+      </div>
+    </div>
+
+    <!-- Gallery Section below the text -->
+    <div class="main-gallery-container">
+      <div class="gallery-item"><img src="img/ban1.avif" alt="Abstract painting."></div>
+      <div class="gallery-item"><img src="img/ban8.avif" alt="Art installation."></div>
+      <div class="gallery-item"><img src="img/ban10.avif" alt="Modern sculpture."></div>
+      <div class="gallery-item"><img src="img/ban11.avif" alt="Colorful wall painting."></div>
+      <div class="gallery-item"><img src="img/ban12.avif" alt="Street art."></div>
+      <div class="gallery-item"><img src="img/ban4.avif" alt="Sculpture in a museum."></div>
+    </div>
+
+
+    <!-- statue -->
+    <section class="animated-section">
+      <div class="glow-bg"></div>
+      <div class="content-wrapper">
+        <div class="statue-container">
+          <img src="img/statu.png" alt="Ancient Statue" class="statue-img">
+        </div>
+        <div class="quote-container">
+          <p class="quote-text"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- video -->
+    <!-- Video Carousel Section -->
+    <section class="section-container">
+      <div class="header-container">
+        <h2 class="header-title">
+          Featured Videos
+        </h2>
+      </div>
+
+      <!-- Video Cards Container -->
+      <div id="video-container" class="video-container">
+        <!-- Video Card 1 -->
+        <div class="card-item">
+          <div class="card">
+            <iframe
+              src="https://www.youtube.com/embed/2LjOBmFHCLw?modestbranding=1&rel=0&autoplay=1&loop=1&playlist=2LjOBmFHCLw"
+              title="Cool Project Showcase - YouTube Short" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="card-image"></iframe>
+            <div class="card-content">
+              <h3 class="card-title">Cool Project Showcase</h3>
+              <p class="card-description">A look into our latest development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="card-item">
+          <div class="card">
+            <iframe
+              src="https://www.youtube.com/embed/PVd1cXKuc7U?modestbranding=1&rel=0&autoplay=1&loop=1&playlist=PVd1cXKuc7U"
+              title="Cool Project Showcase - YouTube Short" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="card-image"></iframe>
+            <div class="card-content">
+              <h3 class="card-title">Cool Project Showcase</h3>
+              <p class="card-description">A look into our latest development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 3 -->
+        <div class="card-item">
+          <div class="card">
+            <iframe
+              src="https://www.youtube.com/embed/mPjMmI_WShY?modestbranding=1&rel=0&autoplay=1&loop=1&playlist=mPjMmI_WShY"
+              title="Cool Project Showcase - YouTube Short" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="card-image"></iframe>
+            <div class="card-content">
+              <h3 class="card-title">Cool Project Showcase</h3>
+              <p class="card-description">A look into our latest development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 4 -->
+        <div class="card-item">
+          <div class="card">
+            <iframe
+              src="https://www.youtube.com/embed/watch?v=4-IsPw3Wa8I&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=5?modestbranding=1&rel=0&autoplay=1&loop=1&playlist=watch?v=4-IsPw3Wa8I&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=5"
+              title="Cool Project Showcase - YouTube Short" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="card-image"></iframe>
+            <div class="card-content">
+              <h3 class="card-title">Cool Project Showcase</h3>
+              <p class="card-description">A look into our latest development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 5 -->
+        <div class="card-item">
+          <div class="card">
+            <iframe
+              src="https://www.youtube.com/embed/watch?v=e7EufWIMQOY&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=5?modestbranding=1&rel=0&autoplay=1&loop=1&playlist=watch?v=e7EufWIMQOY&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=5"
+              title="Cool Project Showcase - YouTube Short" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="card-image"></iframe>
+            <div class="card-content">
+              <h3 class="card-title">Cool Project Showcase</h3>
+              <p class="card-description">A look into our latest development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 6 -->
+        <div class="card-item">
+          <div class="card">
+            <iframe
+              src="https://www.youtube.com/embed/watch?v=u_Ux5mSGRho&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=6?modestbranding=1&rel=0&autoplay=1&loop=1&playlist=watch?v=u_Ux5mSGRho&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=6"
+              title="Cool Project Showcase - YouTube Short" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="card-image"></iframe>
+            <div class="card-content">
+              <h3 class="card-title">Cool Project Showcase</h3>
+              <p class="card-description">A look into our latest development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 7 -->
+        <div class="card-item">
+          <div class="card">
+            <iframe
+              src="https://www.youtube.com/embed/watch?v=RsHeGVQQQUA&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=8?modestbranding=1&rel=0&autoplay=1&loop=1&playlist=watch?v=RsHeGVQQQUA&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=8"
+              title="Cool Project Showcase - YouTube Short" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="card-image"></iframe>
+            <div class="card-content">
+              <h3 class="card-title">Cool Project Showcase</h3>
+              <p class="card-description">A look into our latest development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 8 -->
+        <div class="card-item">
+          <div class="card">
+            <iframe
+              src="https://www.youtube.com/embed/watch?v=WBDXhjYR4aY&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=9?modestbranding=1&rel=0&autoplay=1&loop=1&playlist=watch?v=WBDXhjYR4aY&list=PLUkjjWwprnPVkqcCE2Aj6mbOy7U_djDST&index=9"
+              title="Cool Project Showcase - YouTube Short" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="card-image"></iframe>
+            <div class="card-content">
+              <h3 class="card-title">Cool Project Showcase</h3>
+              <p class="card-description">A look into our latest development.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- review -->
+    <section class="review-section">
+      <h2 class="review-title">What Our Clients Say</h2>
+      <div class="review-container">
+        <button id="review-scroll-left" class="review-nav-btn">
+          <!-- Left Arrow SVG -->
+          <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <p id="review-text" class="review-text">
+          "Working with this team has been an absolute pleasure. Their attention to detail and creative solutions are
+          second to none."
+        </p>
+        <button id="review-scroll-right" class="review-nav-btn">
+          <!-- Right Arrow SVG -->
+          <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- magazine -->
+
+      <div class="magazine-section">
+        <div class="header1">
+            <h1 class="header-title1">
+                LATEST NE<span class="header-title-inner">W</span>S
+            </h1>
+            <span class="header-number">25</span>
+        </div>
+
+        <div class="scrolling-container">
+            <div class="scroll-track">
+                <!-- Magazine Cover Card 1 -->
+                <div class="magazine-card" data-number="01">
+                    <img src="img/m1.jpeg" alt="Basic Sensual" class="magazine-image" />
+                    <div class="magazine-text">
+                        <span class="magazine-title">est</span>
+                        <span class="magazine-subtitle">modern kitchen</span>
+                        <a href="#" class="view-collection-btn">View Collection</a>
+                    </div>
+                </div>
+
+                <!-- Magazine Cover Card 2 -->
+                <div class="magazine-card" data-number="02">
+                    <img src="img/m2.jpeg" alt="Extravagance" class="magazine-image" />
+                    <div class="magazine-text">
+                        <span class="magazine-title">inside</span>
+                        <span class="magazine-subtitle">shortout list</span>
+                        <a href="#" class="view-collection-btn">View Collection</a>
+                    </div>
+                </div>
+
+                <!-- Magazine Cover Card 3 -->
+                <div class="magazine-card" data-number="03">
+                    <img src="img/m3.jpeg" alt="Lotus" class="magazine-image" />
+                    <div class="magazine-text">
+                        <span class="magazine-title">frame</span>
+                        <span class="magazine-subtitle">mad architects</span>
+                        <a href="#" class="view-collection-btn">View Collection</a>
+                    </div>
+                </div>
+
+                <!-- Magazine Cover Card 4 -->
+                <div class="magazine-card" data-number="04">
+                    <img src="img/m4.jpeg" alt="Intensity" class="magazine-image" />
+                    <div class="magazine-text">
+                        <span class="magazine-title">the atelier</span>
+                        <span class="magazine-subtitle"> less is more</span>
+                        <a href="#" class="view-collection-btn">View Collection</a>
+                    </div>
+                </div>
+
+                <!-- NEW Magazine Cover Card 5 -->
+                <div class="magazine-card" data-number="05">
+                    <img src="img/m5.jpeg" alt="Harmony" class="magazine-image" />
+                    <div class="magazine-text">
+                        <span class="magazine-title">decor</span>
+                        <span class="magazine-subtitle">media pack</span>
+                        <a href="#" class="view-collection-btn">View Collection</a>
+                    </div>
+                </div>
+
+                <!-- NEW Magazine Cover Card 6 -->
+                <div class="magazine-card" data-number="06">
+                    <img src="img/m6.jpeg" alt="Balance" class="magazine-image" />
+                    <div class="magazine-text">
+                        <span class="magazine-title">est</span>
+                        <span class="magazine-subtitle">the heart of the home</span>
+                        <a href="#" class="view-collection-btn">View Collection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Footer Container -->
+    <footer class="footer-container">
+      <!-- Faint background circle -->
+      <div class="faint-circle"></div>
+
+      <!-- GET IN TOUCH Section -->
+      <div class="get-in-touch">
+        GET IN <span class="circle-text">TOUCH</span>
+      </div>
+
+      <!-- Horizontal Divider 1 -->
+      <div class="divider"></div>
+
+      <!-- Links Section -->
+      <div class="flex flex-col md:flex-row justify-start gap-12 md:gap-24 mb-6">
+        <!-- Navigation Column -->
+        <div class="flex-1">
+          <h3 class="uppercase text-gray-500 text-xs mb-4">Navigation</h3>
+          <ul class="link-list flex flex-col gap-2">
+            <li><a href="#" class="hover:underline">Home</a></li>
+            <li><a href="#" class="hover:underline">About</a></li>
+            <li><a href="#" class="hover:underline">Services</a></li>
+            <li><a href="#" class="hover:underline">Works</a></li>
+            <li><a href="#" class="hover:underline">Reviews</a></li>
+            <li><a href="#" class="hover:underline">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Socials Column -->
+        <div class="flex-1">
+          <h3 class="uppercase text-gray-500 text-xs mb-4">Socials</h3>
+          <ul class="link-list flex flex-col gap-2">
+            <li><a href="#" class="hover:underline">LinkedIn</a></li>
+            <li><a href="#" class="hover:underline">YouTube</a></li>
+            <li><a href="#" class="hover:underline">Instagram</a></li>
+            <li><a href="#" class="hover:underline">Bento</a></li>
+            <li><a href="#" class="hover:underline">Github</a></li>
+          </ul>
+        </div>
+
+        <!-- Logo Section -->
+        <div class="flex-1 logo-container">
+          <!-- Replace 'your-logo-url.png' with the actual path to your logo image -->
+          <img src="img/logo.png" alt="Logo" class="logo-img mx-auto"
+            onerror="this.src='https://placehold.co/200x50/B0A694/FFFFFF?text=YOUR+LOGO'" />
+        </div>
+      </div>
+
+      <!-- Horizontal Divider 2 -->
+      <div class="divider"></div>
+
+      <!-- Bottom Section: Copyright, Time, Scroll-to-top -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 mt-6">
+        <!-- Copyright -->
+        <div class="text-sm text-gray-600">
+          &copy; 2025 9th Corner-Designed By Promopact Marketing.
+        </div>
+
+        <!-- Local Time -->
+        <div class="text-sm text-gray-600 flex flex-col items-center md:items-start">
+          <span class="uppercase text-xs text-gray-500 mb-1">Local Time</span>
+          <span id="local-time" class="text-xs"></span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="9th.js"></script>
+
+</body>
+
+</html>
